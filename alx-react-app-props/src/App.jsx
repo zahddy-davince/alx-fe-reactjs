@@ -1,6 +1,6 @@
-import ProfilePage from './components/ProfilePage';
-import UserContext from './UserContext.js';
 import React from 'react';
+import ProfilePage from './components/ProfilePage';
+import UserContext from './UserContext';
 import UserProfile from './components/UserProfile';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
@@ -9,31 +9,34 @@ import WelcomeMessage from './components/WelcomeMessage';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Counter from './components/Counter';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  function UserDetails() {
-    const userData = useContext(UserContext);
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
   return (
     <>
      <div className="App">
             <WelcomeMessage />
         </div>
-        <div>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-    </div>
-        <UserContext.Provider value={userData}>
-      <ProfilePage />
-    </UserContext.Provider>
         <div className="App">
             <Header />
             <MainContent />
             <Footer />
         </div>
+        <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
         <div className="App">
+      <h1>Counter Application</h1>
+      <Counter />
+    </div>
+        <div className="App">
+            <Header />
+            <MainContent />
             <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+            <Footer />
         </div>
       <div>
         <a href="https://vite.dev" target="_blank">
@@ -57,7 +60,6 @@ function App() {
       </p>
     </>
   )
-  }
 }
 
 export default App
