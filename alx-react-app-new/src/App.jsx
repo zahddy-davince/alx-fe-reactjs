@@ -7,6 +7,7 @@ import WelcomeMessage from './components/WelcomeMessage';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Counter from './components/Counter';
 import './App.css'
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
             <MainContent />
             <Footer />
         </div>
+        <div className="App">
+      <h1>Counter Application</h1>
+      <Counter />
+    </div>
         <div className="App">
             <Header />
             <MainContent />
