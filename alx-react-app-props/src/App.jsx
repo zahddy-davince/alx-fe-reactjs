@@ -1,3 +1,5 @@
+import ProfilePage from './components/ProfilePage';
+import UserContext from './UserContext.js';
 import React from 'react';
 import UserProfile from './components/UserProfile';
 import Header from './components/Header';
@@ -5,21 +7,23 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
 import { useState } from 'react'
-import ProfilePage from './ProfilePage';
-import UserContext from './UserContext';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
-
+  function UserDetails() {
+    const userData = useContext(UserContext);
   return (
     <>
      <div className="App">
             <WelcomeMessage />
         </div>
+        <div>
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
+    </div>
         <UserContext.Provider value={userData}>
       <ProfilePage />
     </UserContext.Provider>
@@ -53,6 +57,7 @@ function App() {
       </p>
     </>
   )
+  }
 }
 
 export default App
